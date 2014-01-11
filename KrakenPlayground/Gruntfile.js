@@ -61,9 +61,9 @@ module.exports = function (grunt) {
           server: {
             files: [{
               expand: true,
-              cwd: '.tmp/css',
+              cwd: 'public/css',
               src: '**/*.css',
-              dest: '.tmp/css'
+              dest: 'public/css'
             }]
           }
         },
