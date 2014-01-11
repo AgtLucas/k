@@ -21,6 +21,52 @@ module.exports = function (grunt) {
                 }
             }
         },
+        compass: {
+          options: {
+            require: 'susy',
+            bundleExec: true,
+            sassDir: 'public/sass',
+            cssDir: 'public/css',
+            imagesDir: 'public/img',
+            javascriptsDir: 'public/js',
+            relativeAssets: false,
+            httpImagesPath: 'public/img',
+            httpGeneratedImagesPath: 'public/img/generated',
+            environment: 'production'
+          },
+          dist: {
+            options: {
+              generatedImagesDir: 'public/img/generated'
+            }
+          },
+          server: {
+            options: {
+              debugInfo: false,
+              generatedImagesDir: 'public/img/generated'
+            }
+          }
+        },
+        autoprefixer: {
+          options: {
+            browsers: ['last 2 versions']
+          },
+          dist: {
+            files: [{
+              expand: true,
+              cwd: '<%= yeoman.dist %>/css',
+              src: '**/*.css',
+              dest: '<%= yeoman.dist %>/css'
+            }]
+          },
+          server: {
+            files: [{
+              expand: true,
+              cwd: '.tmp/css',
+              src: '**/*.css',
+              dest: '.tmp/css'
+            }]
+          }
+        },
         makara: {
             files: ['public/templates/**/*.dust'],
             options: {
