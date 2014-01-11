@@ -21,17 +21,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-        less: {
-            build: {
-                options: {
-                    yuicompress: true,
-                    paths: ['public/css']
-                },
-                files: {
-                    '.build/css/app.css': 'public/css/app.less'
-                }
-            }
-        },
         makara: {
             files: ['public/templates/**/*.dust'],
             options: {
@@ -91,7 +80,6 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -102,7 +90,7 @@ module.exports = function (grunt) {
     grunt.loadTasks('./node_modules/makara/tasks/');
 
     grunt.registerTask('i18n', ['clean', 'makara', 'dustjs', 'clean:tmp']);
-    grunt.registerTask('build', ['jshint', 'less', 'requirejs', 'copyto', 'i18n']);
+    grunt.registerTask('build', ['jshint', 'requirejs', 'copyto', 'i18n']);
     grunt.registerTask('test', ['jshint', 'mochacli']);
 
 };
