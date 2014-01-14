@@ -1,2 +1,1 @@
-k
-=
+http://krakenjs.com/
